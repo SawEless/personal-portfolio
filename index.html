@@ -978,8 +978,70 @@
             100% { transform: scale(1); }
         }
     </style>
+
+        /* Tech SVG Animated Background */
+        .tech-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 16px rgba(0,212,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 10001;
+        }
+        .scroll-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .profile-image {
+            animation: floatProfile 4s ease-in-out infinite alternate;
+        }
+        @keyframes floatProfile {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-18px); }
+        }
 </head>
 <body>
+    <!-- Tech SVG Animated Background -->
+    <div class="tech-bg" aria-hidden="true">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" preserveAspectRatio="none" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-2;pointer-events:none;">
+        <g>
+          <circle cx="200" cy="200" r="80" fill="#00d4ff22">
+            <animate attributeName="r" values="80;120;80" dur="6s" repeatCount="indefinite"/>
+          </circle>
+          <rect x="1500" y="100" width="120" height="120" fill="#ff6b6b22">
+            <animate attributeName="x" values="1500;1400;1500" dur="7s" repeatCount="indefinite"/>
+          </rect>
+          <polyline points="400,900 800,700 1200,900" fill="none" stroke="#00d4ff44" stroke-width="6">
+            <animate attributeName="points" values="400,900 800,700 1200,900;400,950 800,650 1200,950;400,900 800,700 1200,900" dur="8s" repeatCount="indefinite"/>
+          </polyline>
+        </g>
+      </svg>
+    </div>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loader"></div>
@@ -994,6 +1056,11 @@
 
     <!-- Particles Background -->
     <div class="particles" id="particles"></div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTopBtn" title="Back to Top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -1115,16 +1182,20 @@
                         <div class="profile-image">
                         <img src="111.jpg" alt="Shailesh Bhattarai" class="profile-img">
         .profile-img {
-            width: 92%;
-            height: 92%;
-            object-fit: contain;
+            width: 96%;
+            height: 96%;
+            object-fit: cover;
             border-radius: 50%;
             display: block;
             margin: 0 auto;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
             background: #fff;
             position: relative;
             z-index: 1;
+            transition: transform 0.4s;
+        }
+        .profile-image:hover .profile-img {
+            transform: scale(1.04) rotate(-2deg);
         }
 
                         </div>
@@ -1450,23 +1521,39 @@
             });
         });
 
-        // Counter Animation
+        // Counter Animation (with plus symbol support)
         function animateCounters() {
             const counters = document.querySelectorAll('.stat-number');
-            
             counters.forEach(counter => {
                 const target = parseInt(counter.getAttribute('data-count'));
-                const count = +counter.innerText;
-                const increment = target / 100;
-                
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(() => animateCounters(), 20);
-                } else {
-                    counter.innerText = target;
-                }
+                let plus = counter.innerText.includes('+');
+                let count = 0;
+                const update = () => {
+                    if (count < target) {
+                        count += Math.ceil(target / 60);
+                        if (count > target) count = target;
+                        counter.innerText = plus ? count + '+' : count;
+                        setTimeout(update, 20);
+                    } else {
+                        counter.innerText = plus ? target + '+' : target;
+                    }
+                };
+                update();
             });
         }
+
+        // Scroll to Top Button logic
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
         // Intersection Observer for Animations
         const observerOptions = {
