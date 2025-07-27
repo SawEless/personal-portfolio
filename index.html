@@ -1179,80 +1179,9 @@
                 </div>
                 <div class="about-visual">
                     <div class="profile-card">
-                        <div class="profile-image tech-glow">
-                            <img src="111.jpg" alt="Shailesh Bhattarai" class="profile-img tech-3d">
-                            <div class="profile-circuit"></div>
+                        <div class="profile-image" style="background: #fff; box-shadow: 0 0 40px 0 #00d4ff33; width: 200px; height: 200px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <img src="111.jpg" alt="Shailesh Bhattarai" style="width: 92%; height: 92%; object-fit: contain; border-radius: 50%; display: block; margin: 0 auto; background: #fff;" />
                         </div>
-        /* Techy 3D Profile Image Enhancements */
-        .profile-image.tech-glow {
-            box-shadow: 0 0 60px 10px #00d4ff88, 0 0 120px 30px #ff6b6b33, 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            background: linear-gradient(135deg, #0a0a0a 60%, #00d4ff 100%);
-            position: relative;
-            overflow: visible;
-            border: 5px solid #00d4ff;
-            animation: floatProfile 4s ease-in-out infinite alternate, techPulse 2.5s infinite alternate;
-        }
-        .profile-img.tech-3d {
-            width: 88%;
-            height: 88%;
-            object-fit: contain;
-            border-radius: 50%;
-            display: block;
-            margin: 0 auto;
-            box-shadow: 0 0 40px 0 #00d4ff99, 0 2px 12px rgba(0,0,0,0.10);
-            background: #fff;
-            position: relative;
-            z-index: 2;
-            transition: transform 0.5s cubic-bezier(.25,.8,.25,1), box-shadow 0.5s;
-            filter: drop-shadow(0 0 16px #00d4ff88) drop-shadow(0 0 32px #ff6b6b44);
-            padding: 8px;
-        }
-        .profile-image.tech-glow:hover .profile-img.tech-3d {
-            transform: scale(1.08) rotateY(8deg) rotateZ(-2deg);
-            box-shadow: 0 0 80px 10px #ff6b6b99, 0 0 120px 30px #00d4ff55;
-        }
-        .profile-circuit {
-            position: absolute;
-            top: -18px; left: -18px; right: -18px; bottom: -18px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1;
-            background: repeating-conic-gradient(from 0deg, #00d4ff33 0deg 10deg, transparent 10deg 20deg);
-            box-shadow: 0 0 40px 10px #00d4ff33;
-            animation: circuitSpin 8s linear infinite;
-        }
-        @keyframes circuitSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes techPulse {
-            0% { box-shadow: 0 0 60px 10px #00d4ff88, 0 0 120px 30px #ff6b6b33; }
-            100% { box-shadow: 0 0 90px 20px #00d4ffcc, 0 0 180px 60px #ff6b6b55; }
-        }
-
-        /* Techy Animated Background - Matrix style */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -3;
-            background: repeating-linear-gradient(120deg, #00d4ff11 0 2px, transparent 2px 40px), repeating-linear-gradient(-60deg, #ff6b6b11 0 2px, transparent 2px 40px), linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-            pointer-events: none;
-            animation: bgMove 20s linear infinite;
-        }
-        @keyframes bgMove {
-            0% { background-position: 0 0, 0 0, 0 0; }
-            100% { background-position: 200px 400px, -200px -400px, 0 0; }
-        }
-
-        /* Animated binary rain overlay */
-        .matrix-rain {
-            pointer-events: none;
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1;
-        }
-    <canvas class="matrix-rain"></canvas>
 
                         </div>
                         <h3>Shailesh Bhattarai</h3>
