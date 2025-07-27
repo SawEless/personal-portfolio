@@ -1026,10 +1026,7 @@
     <!-- Particles Background -->
     <div class="particles" id="particles"></div>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTopBtn" title="Back to Top">
-      <i class="fas fa-arrow-up"></i>
-    </button>
+
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -1148,8 +1145,14 @@
                 </div>
                 <div class="about-visual">
                     <div class="profile-card">
-                        <div class="profile-image" style="background: #fff; box-shadow: 0 0 40px 0 #00d4ff33; width: 200px; height: 200px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <div class="profile-image" style="background: #fff; box-shadow: 0 0 40px 0 #00d4ff33; width: 240px; height: 240px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; flex-direction: column;">
                             <img src="111.jpg" alt="Shailesh Bhattarai" style="width: 92%; height: 92%; object-fit: contain; border-radius: 50%; display: block; margin: 0 auto; background: #fff;" />
+                            <h3 style="margin: 0.5rem 0 0.2rem 0;">Shailesh Bhattarai</h3>
+                            <p style="margin: 0 0 0.5rem 0; color: var(--primary-color); font-weight: 600;">Full Stack MERN Developer</p>
+                            <div class="profile-stats" style="margin-bottom: 0.5rem;">
+                                <div class="profile-stat" style="margin-bottom: 0.2rem;"><strong>Location:</strong> Australia</div>
+                                <div class="profile-stat"><strong>Available:</strong> Open to work</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1519,18 +1522,7 @@
             });
         }
 
-        // Scroll to Top Button logic
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        });
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+
 
         // Intersection Observer for Animations
         const observerOptions = {
