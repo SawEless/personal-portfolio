@@ -810,49 +810,27 @@
             border: 1px solid var(--border-glow);
             text-align: center;
             backdrop-filter: blur(20px);
-        }
-
-
-        .profile-image {
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 4rem;
-            color: var(--secondary-color);
-            box-shadow: 0 0 40px 0 var(--primary-color), 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            border: 4px solid var(--primary-color);
-            position: relative;
-            transition: box-shadow 0.4s, border-color 0.4s;
-            overflow: hidden;
         }
 
-        .profile-image::after {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: -8px;
-            width: calc(100% + 16px);
-            height: calc(100% + 16px);
+
+        .profile-photo.enhanced-photo {
+            width: 210px;
+            height: 210px;
+            object-fit: cover;
             border-radius: 50%;
-            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
-            opacity: 0.25;
-            z-index: 0;
-            pointer-events: none;
-            transition: opacity 0.4s;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 32px 0 rgba(0, 212, 255, 0.18), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+            margin-bottom: 1.1rem;
+            background: #f8fafd;
+            display: block;
+            transition: box-shadow 0.3s, border-color 0.3s;
         }
-
-        .profile-image:hover {
-            box-shadow: 0 0 60px 10px var(--accent-color), 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            border-color: var(--accent-color);
-        }
-
-        .profile-image:hover::after {
-            opacity: 0.5;
+        .profile-photo.enhanced-photo:hover {
+            box-shadow: 0 0 40px 8px var(--accent-color), 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+            border-color: var(--primary-color);
         }
 
         /* Contact Section */
@@ -1183,15 +1161,13 @@
                 </div>
                 <div class="about-visual">
                     <div class="profile-card">
-                        <div class="profile-image">
-                            <img src="111.jpg" alt="Shailesh Bhattarai" class="profile-photo enhanced-photo" />
-                            <div class="profile-details">
-                                <h3>Shailesh Bhattarai</h3>
-                                <p class="profile-title">Full Stack MERN Developer</p>
-                                <div class="profile-stats">
-                                    <div class="profile-stat"><i class="fas fa-map-marker-alt"></i> Australia</div>
-                                    <div class="profile-stat"><i class="fas fa-briefcase"></i> Open to work</div>
-                                </div>
+                        <img src="111.jpg" alt="Shailesh Bhattarai" class="profile-photo enhanced-photo" />
+                        <div class="profile-details">
+                            <h3>Shailesh Bhattarai</h3>
+                            <p class="profile-title">Full Stack MERN Developer</p>
+                            <div class="profile-stats">
+                                <div class="profile-stat"><i class="fas fa-map-marker-alt"></i> Australia</div>
+                                <div class="profile-stat"><i class="fas fa-briefcase"></i> Open to work</div>
                             </div>
                         </div>
                     </div>
